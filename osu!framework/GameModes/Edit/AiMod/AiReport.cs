@@ -13,20 +13,22 @@ namespace osu.GameModes.Edit.AiMod
         public readonly string WebLink;
         public readonly List<HitObjectBase> RelatedHitObjects = new List<HitObjectBase>();
         public readonly BeenCorrectedDelegate corrected;
+        public readonly GameMode Mode;
 
-        public AiReport(Severity severity, string information)
-            : this(-1, severity, information, 0, null)
+        public AiReport(Severity severity, string information, GameMode Mode = GameMode.All)
+            : this(-1, severity, information, 0, null, Mode)
         {
 
         }
 
-        public AiReport(int time, Severity severity, string information, int weblink, BeenCorrectedDelegate corrected)
+        public AiReport(int time, Severity severity, string information, int weblink, BeenCorrectedDelegate corrected, GameMode Mode = GameMode.All)
         {
             Time = time;
             Severity = severity;
             Information = information;
             WebLink = "http://osu.ppy.sh/web/osu-gethelp.php?p=" + weblink;
             this.corrected = corrected;
+            this.Mode = Mode;
         }
 
         /// <summary>
@@ -49,6 +51,17 @@ namespace osu.GameModes.Edit.AiMod
         Info,
         Warning,
         Error
+    }
+
+    [Flags]
+    public enum GameMode
+    {
+        None = 0,
+        Osu = 1,
+        Taiko = 2,
+        CatchTheBeat = 4,
+        OsuMania = 8,
+        All = Osu | Taiko | CatchTheBeat | OsuMania
     }
 
     /// <summary>

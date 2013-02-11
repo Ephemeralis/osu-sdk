@@ -12,6 +12,7 @@ namespace osu.GameModes.Edit.AiMod
         /// Set a default type for reports returned by this ruleset.
         /// </summary>
         public abstract AiModType Type { get; }
+        public GameMode Mode { get { return GameMode.All; } }
 
         public AiModRuleset()
         {
@@ -48,6 +49,8 @@ namespace osu.GameModes.Edit.AiMod
         Errors,
         Difficulty,
         Style,
+        Skin,
         Custom
     }
+
 }

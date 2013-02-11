@@ -10,8 +10,8 @@ namespace osu.GameModes.Edit.AiMod.Reports
     {
         public readonly HitObjectBase h1;
 
-        public AiReportOneObject(HitObjectBase h, BeenCorrectedDelegate corrected, Severity severity, string information, int weblink)
-            : base(h.StartTime, severity, information, weblink, corrected)
+        public AiReportOneObject(HitObjectBase h, BeenCorrectedDelegate corrected, Severity severity, string information, int weblink, GameMode Mode = GameMode.All)
+            : base(h.StartTime, severity, information, weblink, corrected, Mode)
         {
             this.h1 = h;
             
